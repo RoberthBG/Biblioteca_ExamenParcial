@@ -50,11 +50,11 @@ namespace BibliotecaWeb.Controllers
             using (var conexion = new SqlConnection(cadenaConexion))
             {
                 string sql = @"SELECT L.Id, L.Titulo, L.Publicacion, 
-                                      A.Id AS IdAutor, A.Nombre AS NombreAutor,
-                                      C.Id AS IdCategoria, C.Nombre AS NombreCategoria
-                               FROM Libros L
-                               INNER JOIN Autores A ON L.IdAutor = A.Id
-                               INNER JOIN Categorias C ON L.IdCategoria = C.Id";
+                              A.Id AS IdAutor, A.Nombre AS NombreAutor,
+                              C.Id AS IdCategoria, C.Nombre AS NombreCategoria
+                       FROM Libros L
+                       INNER JOIN Autores A ON L.IdAutor = A.Id
+                       INNER JOIN Categorias C ON L.IdCategoria = C.Id";
 
                 using (var comando = new SqlCommand(sql, conexion))
                 {
