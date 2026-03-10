@@ -9,14 +9,14 @@ namespace BibliotecaWeb.Controllers
     {
         private readonly string cadenaConexion = "server=localhost; database=Biblioteca; user id=sa; password=sqladmin; TrustServerCertificate=true";
 
-        // Listar todos los libros
+        
         public IActionResult Index()
         {
             var listaLibros = ObtenerLibros();
             return View(listaLibros);
         }
 
-        // Mostrar formulario de creación
+        
         public IActionResult Create()
         {
             var autores = ObtenerAutores();
@@ -28,7 +28,7 @@ namespace BibliotecaWeb.Controllers
             return View(new Libro());
         }
 
-        // Guardar nuevo libro
+        
         [HttpPost]
         public IActionResult Create(Libro libro)
         {
@@ -36,7 +36,7 @@ namespace BibliotecaWeb.Controllers
             if (exito)
                 return RedirectToAction("Index");
 
-            // Si falla, recargamos combos
+            
             ViewBag.Autores = new SelectList(ObtenerAutores(), "Id", "Nombre");
             ViewBag.Categorias = new SelectList(ObtenerCategorias(), "Id", "Nombre");
             return View(libro);
